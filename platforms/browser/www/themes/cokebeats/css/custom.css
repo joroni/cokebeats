@@ -507,7 +507,7 @@ div#login-page form div.list-block.center {
     width: 100%;
     overflow-x: hidden !important;
     overflow-y: auto !important;
-    border: 1px solid #ddd;
+    border: 0px solid #ddd;
     padding: 10px 20px;
 }
 
@@ -531,11 +531,11 @@ div#login-page form div.list-block.center {
 }
 
 .commentbox {
-    background: rgba(255, 255, 255, 1) !important;
+    background: #f7f7f8 !important;
     position: fixed;
     top: 20px !important;
     border: 0px solid;
-    left: 50px !important;
+    left: 10px !important;
     z-index: 1100;
     width: 100%;
     padding: 10px 10px 10px 10px !important;
@@ -675,6 +675,7 @@ div#login-page form div.list-block.center {
     text-shadow: none !important;
     color: #fff;
     border: none;
+    font-size: 11px !important;
     border-radius: 0;
 }
 
@@ -961,3 +962,15 @@ button.btn.btn-info.btn-lg {
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
 }
+
+#logoutBtn {
+    position: absolute !important;
+    right: 5px !important;
+    top: 10px !important;
+    color: #ddd !important;
+    width: 50px !important;
+    z-index: 20000;
+   /* display: none; */
+}
+
+

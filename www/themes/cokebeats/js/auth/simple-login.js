@@ -16,8 +16,8 @@ define( [ 'jquery', 'core/theme-app', 'core/modules/authentication' ], function(
 	 * then memorize a jQuery reference to it.
 	 */
 	//$( '<div class="clearfix"><div class="clearfix" id="user-info"></div></div>' ).insertAfter( '#app-title' );
-	$( '<div class="clearfix" id="user-info" style="display: none;></div>' ).insertAfter( '#app-title' );
-	$( '<div class="clearfix" id="user-info2" style="display: none;"></div>' ).insertAfter( '#app-title' );
+	$( '<div class="clearfix" id="user-info" style="display: block;></div>' ).insertAfter( '#app-title' );
+	//$( '<div class="clearfix" id="user-info2" style="display: none;"></div>' ).insertAfter( '#app-title' );
 	/*$( '<div id="user-info" class="popover popover-menu modal-in" style="display: block; top: 370px !important; left: 18px;">'
 		+'<div class="popover-angle on-bottom" style="left: 200px;"></div>'
 		+'<div class="popover-inner">'
@@ -31,9 +31,17 @@ define( [ 'jquery', 'core/theme-app', 'core/modules/authentication' ], function(
 		+'</div>'
 		+'</div>'
 		+'</div>' ).insertAfter( '#popDiv' );*/
-	var $user_info2 = $('#user-info2');
 
-	/**
+
+
+
+
+/*************** 1 ****************/
+
+var $user_info = $('#user-info');
+
+
+    /**
 	 * Function that handles the login/logout form display depending on
 	 * whether the user is logged in or not.
 	 */
@@ -43,34 +51,14 @@ define( [ 'jquery', 'core/theme-app', 'core/modules/authentication' ], function(
 
 		if ( current_user ) {
 			//User logged in : display user info and logout button :
-			$user_info2.html( '<li><a href="#user-page" id="user_' + 'current_user.id' + '">'+ current_user.login +'</a></li><li> <button type="button" class="btn btn-danger btn-block" id="logout">Log out</button></li>');
+			$user_info.html( '<li><a href="#user-page" id="user_' + 'current_user.id' + '">'+ current_user.login +'</a></li><li> <button type="button" class="btn btn-danger btn-block" id="logout"><i class="fa small fa-power-off"  id="logout"></i></button></li>');
 		} else {
-			//User not logged in : display the login button :
-			$user_info2.html( '<li>No user connected <button type="button" class="btn btn-info" id="login">Log in</button></li>' );
-		}
-
-	};
-
-
-	var $user_info = $('#user-info');
-
-	/**
-	 * Function that handles the login/logout form display depending on 
-	 * whether the user is logged in or not.
-	 */
-	var update_login_info = function() {
-		
-		var current_user = Auth.getCurrentUser();
-		
-		if ( current_user ) { 
-			//User logged in : display user info and logout button :
-			$user_info.html( '<li><a href="#user-page" id="user_' + 'current_user.id' + '">'+ current_user.login +'</a></li><li> <button type="button" class="btn btn-danger btn-block" id="logout">Log out</button></li>');
-		} else { 
 			//User not logged in : display the login button :
 			$user_info.html( '<li>No user connected <button type="button" class="btn btn-info" id="login">Log in</button></li>' );
 		}
-		
+
 	};
+
 
 	/**
 	 * Update the login/logout display as soon as the theme is loaded,
@@ -110,8 +98,7 @@ define( [ 'jquery', 'core/theme-app', 'core/modules/authentication' ], function(
 		Auth.logUserIn( 
 			$('#userlogin').val(), 
 			$('#userpass').val(),
-			$('#user-info').hide(),
-			$('#user-info2').show()
+			$('#user-info').hide()
 
 		);
 	} );
@@ -128,13 +115,6 @@ define( [ 'jquery', 'core/theme-app', 'core/modules/authentication' ], function(
 
 
 
- $('#logout').on('click', function ( ) {
-  //      localStorage.removeItem('user_display_name',data);
-       // localStorage.removeItem('user_display_name',data);
-
-	e.preventDefault();
-	Auth.logUserOut();
-  });
 
 } );
 

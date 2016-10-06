@@ -757,6 +757,43 @@ function showLogout() {
 }
 
 
+
+
+$('#logoutBtn').on('click', function (e) {
+    e.preventDefault();
+    localStorage.removeItem('Authentication-coke-beats-Authentication-coke-beats');
+    window.location.replace('index.html');
+   //localStorage.removeItem('user_login');
+    // localStorage.removeItem('user_display_name',data);
+
+    //e.preventDefault();
+    //Auth.logUserOut();
+});
+
+
+
+
 $('#popovertrigger').on('click', function ( ) {
     $('#popoverpop').toggle();
 });
+
+
+$('#homeBtn').on('click', function ( ) {
+    $('#logoutBtn').show();
+    window.location.replace('index.html');
+});
+
+function check_storage(){
+
+    if (localStorage['Authentication-coke-beats-Authentication-coke-beats']) {
+        //window.location.replace("main.html");
+        console.log('OK');
+        $('#logoutBtn').show();
+    }else{
+        console.log('err');
+       $('#logoutBtn').hide();
+    }
+
+}
+check_storage();
+
